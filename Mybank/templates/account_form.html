@@ -1,0 +1,145 @@
+
+{% extends 'base.html' %}
+
+{% load static %} 
+
+{% block title %}
+Open account Form
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section>
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3 bg-secondary padding">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+              <h2 class="text-uppercase text-center mb-5">Bank With Us</h2>
+
+              <form method="post" action="#" id="registrationForm">
+                {% csrf_token %}
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example1cg">Full Name</label>
+                    <input type="text" id="form3Example1cg" name="full_name" class="form-control form-control-lg"  required/>
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example3cg">Date Of Birth</label>
+                    <input type="date"  name="dob" class="form-control form-control-lg" required />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" >Age</label>
+                    <input type="text"  name="age" class="form-control form-control-lg" required />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" >Gender</label><br>
+                    <input type="radio" class="gender-radio" name="gender" value="Male"  /> Male
+                    <input type="radio" class="gender-radio" name="gender" value="Female" /> Female
+                    <input type="radio" class="gender-radio" name="gender" value="Others" /> Others
+                </div>
+
+                <div class="form-outline mb-2">
+                  <label class="form-label" >Phone Number</label>
+                  <input type="text"  name="phone_number" class="form-control form-control-lg"  required/>
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example3cg">Your Email</label>
+                    <input type="email" id="form3Example3cg" name="email" class="form-control form-control-lg" required />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="form3Example3cg">Address</label>
+                    <input type="text"  name="address" class="form-control form-control-lg" required/>
+                </div>
+
+                <div class=" category_div form-outline mb-2">
+                    <label>Please specify the district:</label>
+                    <select name="district" class="required-entry form-select  mb-4 mt-2" aria-label="Default select example"  onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+                        <option value="">Select District</option>
+                        <option value="Calicut">Calicut</option>
+                        <option value="Ernakulam">Ernakulam</option>
+                        <option value="Trivandrum">Trivandrum</option>
+                        <option value="Coimbatore">Coimbatore</option>
+                        <option value="Chennai">Chennai</option>
+
+                    </select>
+                </div>
+
+                <div class=" category_div form-outline mb-2">
+                  <label>Please specify the Branch:</label>
+              </div>
+
+              <script type="text/javascript" language="JavaScript">
+                document.write('<select name="branch" id="branch" class="form-select mb-4 mt-2" aria-label="Default select example"><option value=""> select the Branch</option></select>')
+              </script>
+              
+              <noscript>
+                <select name="branch" id="branch" >
+                    <option value="">Please select the Branch</option>
+                </select>
+              </noscript>
+              
+
+
+              <div class=" category_div form-outline mb-2">
+                <label>Account :</label>
+                <select name="account_type" class="required-entry form-select  mb-4 mt-2" aria-label="Default select example">
+                    <option value="">Select Account Type</option>
+                    <option value="Calicut">Saving</option>
+                    <option value="Ernakulam">Current</option>
+                    <option value="Trivandrum">Fixed</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="margin-bottom: 15px;"> Materials Provided :</label><br>
+                <input type="checkbox" id="debitcard" name="debitcard" value="debitcard">
+                <label for="debitcard"> Debit Card</label><br>
+                <input type="checkbox" id="creditcard" name="creditcard" value="creditcard">
+                <label for="creditcard"> Credit Card</label><br>
+                <input type="checkbox" id="chequebook" name="chequebook" value="chequebook">
+                <label for="chequebook"> Cheque Book</label><br>
+              </div>
+
+
+              <div class="d-flex justify-content-center">
+                <input  type="submit" style="margin-right: 75px;"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-white" ></button>
+                    <a href="{% url 'logout' %}">
+                  <button  type="button"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-white" >Logout</button>
+                  </a>
+              </div>
+              
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block footer %}{% endblock %}  <!-- Empty footer block to hide the footer -->
+
+<script>
+  function confirmation() {
+    alert("The form submission is successful");
+  }
+  document.getElementById("registrationForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    confirmation();
+  });
+</script>
+{% endblock %}
